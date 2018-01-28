@@ -55,17 +55,40 @@ var MyTitle = React.createClass({
 
 
 
+var M = React.createClass({
+	handleClick: function () {
+	  this.ref.mytextinput.focus();
+	},
+	render: function () {
+	  return (
+	  <div>
+	    <input type="text" ref="mytextinput" />
+	    <input type="button" value="focus this text input" onClick={this.handleClick} />
+	  </div>
+	  );
+	}
+});
 
 
 
 var M = React.createClass({
-	handleClick: function () {
-	  this.ref.mytextinput.focus();
+	render: function () {
+	  return <div>hello {this.props.name ? this.props.name : "world"}</div>;
 	}
-})
+});
+ReactDOM.render(<M name="xiaowang" />, document.body);
 
 
 
+
+var M = React.createClass({
+	render: function () {
+	  return <div>hello {this.props.name || "world"}</div>;
+	}
+}) 
+
+
+函数表达式
 
 </body>
 </html>
@@ -85,7 +108,7 @@ getInitialState 方法用于定义初始状态，也就是一个对象，这个�
 注意点：
 如果往原生 HTML 元素里传入 HTML 规范里不存在的属性，React 不会显示它们。如果需要使用自定义属性，要加 data- 前缀。
 
-作者：可乐爱上咖啡
-链接：https://www.jianshu.com/p/7e872afeae42
-來源：简书
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+求值表达式:
+
+要使用 JavaScript 表达式作为属性值，只需把这个表达式用一对大括号 ( { } ) 包起来，不要用引号 ( " " )。
+在编写JSX时，在 { } 中不能使用语句（if语句、for语句等等），但可以使用求值表达式，这本身与JSX没有多大关系，是JS中的特性，它是会返回值的表达式。我们不能直接使用语句，但可以把语句包裹在函数求值表达式中运用。
