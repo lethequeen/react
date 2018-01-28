@@ -17,6 +17,8 @@ ReactDOM.render(
 )
 
 
+
+
 var M = React.createClass({
 	render: function() {}
 })
@@ -24,5 +26,66 @@ ReactDOM.render(M, document.getElementById())
 
 
 
+
+
+var M = React.createClass({
+	getInitialState: function () {},
+	handleClick: function () {
+	  var L = this.state.
+
+	  this.setState();
+	},
+	render: function () {}
+});
+ReactDOM.render(M, getElementById());
+
+
+
+
+var MyTitle = React.createClass({
+	propType: {
+	  title: React.PropType.string.isRequired,
+	},
+	render: function () {
+	  return <h1> {this.props.title}</h1>
+	}
+})
+
+
+
+
+
+
+
+
+var M = React.createClass({
+	handleClick: function () {
+	  this.ref.mytextinput.focus();
+	}
+})
+
+
+
+
 </body>
 </html>
+
+
+关于属性props：
+
+class 属性需要写成 className ，for 属性需要写成 htmlFor ，这是因为 class 和 for 是 JavaScript 的保留字。
+直接在标签上使用style属性时，要写成style={{}}是两个大括号，外层大括号是告知jsx这里是js语法，和真实DOM不同的是，属性值不能是字符串而必须为对象，需要注意的是属性名同样需要驼峰命名法。即margin-top要写成marginTop。
+this.props.children 不要children作为把对象的属性名。因为this.props.children获取的该标签下的所有子标签。this.props.children 的值有三种可能：如果当前组件没有子节点，它就是 undefined ;如果有一个子节点，数据类型是 object ；如果有多个子节点，数据类型就是 array 。所以，处理 this.props.children 的时候要小心。官方建议使用React.Children.map来遍历子节点，而不用担心数据类型。
+关于状态state：
+
+组件免不了要与用户互动，React 将组件看成是一个状态机，一开始有一个初始状态，然后用户互动，导致状态变化，从而触发重新渲染 UI。
+getInitialState 方法用于定义初始状态，也就是一个对象，这个对象可以通过 this.state 属性读取。当用户点击组件，导致状态变化，this.setState 方法就修改状态值，每次修改以后，自动调用 this.render 方法，再次渲染组件。
+由于 this.props 和 this.state 都用于描述组件的特性，可能会产生混淆。一个简单的区分方法是，this.props 表示那些一旦定义，就不再改变的特性，而 this.state 是会随着用户互动而产生变化的特性。
+
+注意点：
+如果往原生 HTML 元素里传入 HTML 规范里不存在的属性，React 不会显示它们。如果需要使用自定义属性，要加 data- 前缀。
+
+作者：可乐爱上咖啡
+链接：https://www.jianshu.com/p/7e872afeae42
+來源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
